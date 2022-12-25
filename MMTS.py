@@ -32,9 +32,15 @@ def get_tickers():
   return tickers
 
 class Indicators():
-  def __init__(self, ticker, date, balance=10**5, comission = False):
+    
+  def __init__(self, ticker, date, interval='day', days=365, balance=10**5, comission = False):
+    if interval == 'day':
+      self.interval = 24
+    elif interval == 'minute':
+      self.interval = 1
+    self.days = days
     start = parse(date)
-    end = start + datetime.timedelta(days=365)
+    end = start + datetime.timedelta(days=self.days)
 
     with requests.Session() as session:
       data = apimoex.get_market_candles(session, security=ticker, interval=24, start=start, end=end)
