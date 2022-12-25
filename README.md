@@ -4,7 +4,7 @@
     Математичка механических торговых систем. <br>Проект "Подручный"
     Решение задачи</h3>
 		<h4>Решение задачи в 
-			<a href="https://colab.research.google.com/drive/1xLtdHvt_uzSe5WTcJyDnWl29NNuvlmEE?usp=sharing">Google Colab</a> </h4>
+			<a href="https://colab.research.google.com/drive/1OHCpHwmP4acImagRwNY6fQ3uX7WztRae?usp=sharing">Google Colab</a> </h4>
 		<hr>
 	Индикаторы использованные в ходе реализации проекта:
 	<li>Moving Average Convergence/Divergence(MACD)</li>
@@ -15,5 +15,6 @@
 		<li>Relative strength index(RSI)</li>
 		<li>IVAR</li>
 		
+	
     
 
