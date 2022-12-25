@@ -32,7 +32,6 @@ def get_tickers():
   return tickers
 
 class Indicators():
-    
   def __init__(self, ticker, date, interval='day', days=365, balance=10**5, comission = False):
     if interval == 'day':
       self.interval = 24
@@ -43,10 +42,11 @@ class Indicators():
     end = start + datetime.timedelta(days=self.days)
 
     with requests.Session() as session:
-      data = apimoex.get_market_candles(session, security=ticker, interval=24, start=start, end=end)
+      data = apimoex.get_market_candles(session, security=ticker, interval=self.interval, start=start, end=end)
 
     self.comission = comission
     self.df = pd.DataFrame(data)
+    print(len(self.df))
     self.df.columns = ['<DATE>', '<OPEN>', '<CLOSE>', '<HIGH>', '<LOW>', '<VOL>']
     self.balance = balance
     self.df["<VOL>"] = pd.to_numeric(self.df["<VOL>"], errors='coerce')
@@ -743,4 +743,3 @@ class Indicators():
       best_strat()
     colormap = lambda x: 'color: green' if x == best_profit * 100 else 'color: black'
     return profitabilities.style.applymap(colormap)
-
