@@ -12,5 +12,8 @@
 		<li>Aroon</li>
 		<li>Average True Range(ATR)</li>
 		<li>Parabolic Stop And Reverse(PSAR)</li>
+		<li>Relative strength index(RSI)</li>
+		<li>IVAR</li>
+		
     
 
