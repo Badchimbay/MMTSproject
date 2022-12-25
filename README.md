@@ -26,6 +26,8 @@
 Подручный выдает результат работы всех стратегии,а результат лучшей стратегии выделяет зеленым цветом и выводит графики<br>
 	![image](https://user-images.githubusercontent.com/99679228/209483237-6b25e3da-4dfa-41ca-9b2c-15146563a9fe.png)
 	![image](https://user-images.githubusercontent.com/99679228/209483244-1456a563-0d9a-4eaa-8587-a31ec064439c.png)
+	![image](https://user-images.githubusercontent.com/99679228/209483255-f65db663-d2dc-4c4f-a06a-ed6c045be9a9.png)
+
 
 
 
