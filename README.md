@@ -16,8 +16,8 @@
 		<li>IVAR</li>
 	Подручный берет данные напрямую с сайта МосБиржи <a href="https://colab.research.google.com/drive/1OHCpHwmP4acImagRwNY6fQ3uX7WztRae?usp=sharing">Московская Биржа</a>
 	Использует, в ходе решения поставленной задачи, различные стратегии, использующие индикаторы из списка выше
-	<\body>
-  <\html>
+  <\body>
+<\html>
 	<html>
   		<body>
 		Работа в колабе:
