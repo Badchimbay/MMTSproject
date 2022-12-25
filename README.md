@@ -1,7 +1,6 @@
-# MMTSproject
 <html>
   <body>
-    Математичка механических торговых систем. <br>Проект "Подручный"
+    <h3>Математика механических торговых систем. <br>Проект "Подручный"
     Решение задачи</h3>
 		<h4>Решение задачи в 
 			<a href="https://colab.research.google.com/drive/1OHCpHwmP4acImagRwNY6fQ3uX7WztRae?usp=sharing">Google Colab</a> </h4>
