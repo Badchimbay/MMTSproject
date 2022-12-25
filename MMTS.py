@@ -148,6 +148,8 @@ class Indicators():
           day_status.append('sell')
           if plot:
             plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
+        else:
+          day_status.append('nothing')
       else:
         day_status.append('nothing')
 
