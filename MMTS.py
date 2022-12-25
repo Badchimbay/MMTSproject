@@ -46,7 +46,6 @@ class Indicators():
 
     self.comission = comission
     self.df = pd.DataFrame(data)
-    print(len(self.df))
     self.df.columns = ['<DATE>', '<OPEN>', '<CLOSE>', '<HIGH>', '<LOW>', '<VOL>']
     self.balance = balance
     self.df["<VOL>"] = pd.to_numeric(self.df["<VOL>"], errors='coerce')
