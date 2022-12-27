@@ -141,22 +141,18 @@ class Indicators():
         if plot:
           plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
 
-      elif i == (len(self.df)-1):
+      else:
+        day_status.append('nothing')
+
+      if i == (len(self.df)-1):
         if self.comission:
           print(f'Комиссия за всё время(MACD + AROON): {k}')
           balance -= k
-        if count > 0:
-          balance += count * self.df['<CLOSE>'][i]
-          k += count * self.df['<CLOSE>'][i] * 0.01
-          count = 0
-          price = self.df['<CLOSE>'][i]
-          day_status.append('sell')
-          if plot:
-            plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
-        else:
-          day_status.append('nothing')
-      else:
-        day_status.append('nothing')
+      
+        balance += count * self.df['<CLOSE>'][i]
+        k += count * self.df['<CLOSE>'][i] * 0.01
+        count = 0
+        price = self.df['<CLOSE>'][i]
 
       count_df.append(count)
       balance_df.append(balance)
@@ -166,7 +162,8 @@ class Indicators():
     MACD_AROON["MoneySpent"] = price_df
     MACD_AROON["Balance"] = balance_df
     MACD_AROON["DayStatus"] = day_status
-    return MACD_AROON[(MACD_AROON['DayStatus'] == 'buy') | (MACD_AROON['DayStatus'] == 'sell')]
+    curr_move = MACD_AROON['DayStatus'].values[-1]
+    return MACD_AROON
 
   def atr_aroon(self, window=14, lb=25, plot=True):
     self.df['AROONu'] = 100 * self.df['<HIGH>'].rolling(lb + 1).apply(lambda x: x.argmax()) / lb
@@ -242,22 +239,18 @@ class Indicators():
         if plot:
           plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
 
-      elif i == (len(self.df)-1):
+      else:
+        day_status.append('nothing')
+
+      if i == (len(self.df)-1):
         if self.comission:
           print(f'Комиссия за всё время(ATR + AROON): {k}')
           balance -= k
-        if count > 0:
-          balance += count * self.df['<CLOSE>'][i]
-          k += count * self.df['<CLOSE>'][i] * 0.01
-          count = 0
-          price = self.df['<CLOSE>'][i]
-          day_status.append('sell')
-          if plot:
-            plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
-        else:
-          day_status.append('nothing')
-      else:
-        day_status.append('nothing')
+      
+        balance += count * self.df['<CLOSE>'][i]
+        k += count * self.df['<CLOSE>'][i] * 0.01
+        count = 0
+        price = self.df['<CLOSE>'][i]
 
       count_df.append(count)
       balance_df.append(balance)
@@ -268,7 +261,7 @@ class Indicators():
     ATR_AROON["Balance"] = balance_df
     ATR_AROON["DayStatus"] = day_status
 
-    return ATR_AROON[(ATR_AROON['DayStatus'] == 'buy') | (ATR_AROON['DayStatus'] == 'sell')]
+    return ATR_AROON
 
   def bolinger_bands(self, window=20, window_dev=2, plot=True):
     indicator_bb = BollingerBands(close=self.df["<CLOSE>"], window=20, window_dev = 2)
@@ -326,22 +319,18 @@ class Indicators():
         if plot:
           plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
 
-      elif i == (len(self.df)-1):
+      else:
+        day_status.append('nothing')
+
+      if i == (len(self.df)-1):
         if self.comission:
           print(f'Комиссия за всё время(Bolinger Bands): {k}')
           balance -= k
-        if count > 0:
-          balance += count * self.df['<CLOSE>'][i]
-          k += count * self.df['<CLOSE>'][i] * 0.01
-          count = 0
-          price = self.df['<CLOSE>'][i]
-          day_status.append('sell')
-          if plot:
-            plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
-        else:
-          day_status.append('nothing')
-      else:
-        day_status.append('nothing')
+      
+        balance += count * self.df['<CLOSE>'][i]
+        k += count * self.df['<CLOSE>'][i] * 0.01
+        count = 0
+        price = self.df['<CLOSE>'][i]
       
       count_df.append(count)
       balance_df.append(balance)
@@ -351,7 +340,7 @@ class Indicators():
     BB["MoneySpent"] = price_df
     BB["Balance"] = balance_df
     BB["DayStatus"] = day_status
-    return BB[(BB['DayStatus'] == 'buy') | (BB['DayStatus'] == 'sell')]
+    return BB 
 
   def psar(self, step=0.02, max_step=0.2, plot=True):
     Psar = PSARIndicator(high=self.df["<HIGH>"], low=self.df["<LOW>"], close=self.df["<CLOSE>"], step=0.02, max_step=0.2)
@@ -405,22 +394,18 @@ class Indicators():
         if plot:
           plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
 
-      elif i == (len(self.df)-1):
+      else:
+        day_status.append('nothing')
+
+      if i == (len(self.df)-1):
         if self.comission:
           print(f'Комиссия за всё время(PSAR): {k}')
           balance -= k
-        if count > 0:
-          balance += count * self.df['<CLOSE>'][i]
-          k += count * self.df['<CLOSE>'][i] * 0.01
-          count = 0
-          price = self.df['<CLOSE>'][i]
-          day_status.append('sell')
-          if plot:
-            plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
-        else:
-          day_status.append('nothing')
-      else:
-        day_status.append('nothing')
+      
+        balance += count * self.df['<CLOSE>'][i]
+        k += count * self.df['<CLOSE>'][i] * 0.01
+        count = 0
+        price = self.df['<CLOSE>'][i]
       
       count_df.append(count)
       balance_df.append(balance)
@@ -430,7 +415,7 @@ class Indicators():
     PSARdf["MoneySpent"] = price_df
     PSARdf["Balance"] = balance_df
     PSARdf["DayStatus"] = day_status
-    return PSARdf[(PSARdf['DayStatus'] == 'buy') | (PSARdf['DayStatus'] == 'sell')]
+    return PSARdf
 
   def rsi(self, plot=True):
     self.df["RSI"] = RSIIndicator(self.df['<CLOSE>'], 10).rsi()
@@ -486,22 +471,18 @@ class Indicators():
         if plot:
           plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
 
-      elif i == (len(self.df)-1):
+      else:
+        day_status.append('nothing')
+
+      if i == (len(self.df)-1):
         if self.comission:
           print(f'Комиссия за всё время(RSI): {k}')
           balance -= k
-        if count > 0:
-          balance += count * self.df['<CLOSE>'][i]
-          k += count * self.df['<CLOSE>'][i] * 0.01
-          count = 0
-          price = self.df['<CLOSE>'][i]
-          day_status.append('sell')
-          if plot:
-            plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
-        else:
-          day_status.append('nothing')
-      else:
-        day_status.append('nothing')
+      
+        balance += count * self.df['<CLOSE>'][i]
+        k += count * self.df['<CLOSE>'][i] * 0.01
+        count = 0
+        price = self.df['<CLOSE>'][i]
       
       count_df.append(count)
       balance_df.append(balance)
@@ -511,7 +492,7 @@ class Indicators():
     RSIdf["MoneySpent"] = price_df
     RSIdf["Balance"] = balance_df
     RSIdf["DayStatus"] = day_status
-    return RSIdf[(RSIdf['DayStatus'] == 'buy') | (RSIdf['DayStatus'] == 'sell')]
+    return RSIdf
 
   def stochastic(self, window_fast=11, window_slow=27, window_sign=9, plot=True):
     St = StochasticOscillator(high = self.df["<HIGH>"], low = self.df["<LOW>"], close = self.df["<CLOSE>"])
@@ -583,22 +564,18 @@ class Indicators():
         if plot:
           plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
 
-      elif i == (len(self.df)-1):
+      else:
+        day_status.append('nothing')
+
+      if i == (len(self.df)-1):
         if self.comission:
           print(f'Комиссия за всё время(Stochastic): {k}')
           balance -= k
-        if count > 0:
-          balance += count * self.df['<CLOSE>'][i]
-          k += count * self.df['<CLOSE>'][i] * 0.01
-          count = 0
-          price = self.df['<CLOSE>'][i]
-          day_status.append('sell')
-          if plot:
-            plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
-        else:
-          day_status.append('nothing')
-      else:
-        day_status.append('nothing')
+      
+        balance += count * self.df['<CLOSE>'][i]
+        k += count * self.df['<CLOSE>'][i] * 0.01
+        count = 0
+        price = self.df['<CLOSE>'][i]
       
       count_df.append(count)
       balance_df.append(balance)
@@ -608,7 +585,7 @@ class Indicators():
     Stochdf["MoneySpent"] = price_df
     Stochdf["Balance"] = balance_df
     Stochdf["DayStatus"] = day_status
-    return Stochdf[(Stochdf['DayStatus'] == 'buy') | (Stochdf['DayStatus'] == 'sell')]
+    return Stochdf
 
   def ivar(self, window_size=10, plot=True):
     calc = [np.std(i) for i in self.df['<CLOSE>'].rolling(window = window_size)]
@@ -673,22 +650,18 @@ class Indicators():
         if plot:
           plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
 
-      elif i == (len(self.df)-1):
+      else:
+        day_status.append('nothing')
+
+      if i == (len(self.df)-1):
         if self.comission:
           print(f'Комиссия за всё время(Ivar): {k}')
           balance -= k
-        if count > 0:
-          balance += count * self.df['<CLOSE>'][i]
-          k += count * self.df['<CLOSE>'][i] * 0.01
-          count = 0
-          price = self.df['<CLOSE>'][i]
-          day_status.append('sell')
-          if plot:
-            plt.scatter(self.df['<DATE>'][i] , self.df['<CLOSE>'][i], c='red', s=78)
-        else:
-          day_status.append('nothing')
-      else:
-        day_status.append('nothing')
+      
+        balance += count * self.df['<CLOSE>'][i]
+        k += count * self.df['<CLOSE>'][i] * 0.01
+        count = 0
+        price = self.df['<CLOSE>'][i]
       
       count_df.append(count)
       balance_df.append(balance)
@@ -698,7 +671,7 @@ class Indicators():
     Ivardf["MoneySpent"] = price_df
     Ivardf["Balance"] = balance_df
     Ivardf["DayStatus"] = day_status
-    return Ivardf[(Ivardf['DayStatus'] == 'buy') | (Ivardf['DayStatus'] == 'sell')]
+    return Ivardf
     
   def _buy_and_hold(self):
     balance = self.balance
@@ -726,6 +699,7 @@ class Indicators():
     profitabilities[''] = ['profitability, %']
     best_strat = None
     best_profit = -float('inf')
+    best_name = None
     for strat, method in strategies.items():
       if strat == 'buy and hold':
         profitability = np.round(self._buy_and_hold(), 4)
@@ -734,11 +708,24 @@ class Indicators():
       if profitability > best_profit:
         best_profit = profitability
         best_strat = method
+        best_name = strat
 
       profitabilities[strat] = [profitability * 100]
 
     profitabilities = profitabilities.set_index([''])
     if plot_best:
-      best_strat()
+      df = best_strat()
+    else:
+      df = best_strat(plot=False)
     colormap = lambda x: 'color: green' if x == best_profit * 100 else 'color: black'
+    last_move = df['DayStatus'].values[-1]
+    print(f"Лучшая стратегия: {best_name}")
+    if last_move == 'buy':
+      rec_move = 'Покупать'
+    elif last_move == 'sell':
+      rec_move = 'Продавать'
+    else:
+      rec_move = 'Удерживать'
+    print(f"Рекоммендуемое действие: {rec_move}")
+
     return profitabilities.style.applymap(colormap)
